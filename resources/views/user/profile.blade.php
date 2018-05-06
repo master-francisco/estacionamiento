@@ -21,7 +21,7 @@
               
               <div class="tab-content">
                 <div id="informacion" class="tab-pane fade in active">
-                        <a href="" class="pull-right"> <span class="glyphicon glyphicon-pencil" aria-hidden="true" id="show"></span> Editar</a>
+                        <a class="button pull-right"  id="show"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</a>
                   <h3>Información Personal</h3>
                     <div class="container">
                       <p><strong>Nombre: </strong></p>
@@ -56,11 +56,11 @@
                       <hr>
                       <div class="buttons">
                           <button type="submit" class="btn btn-primary ">Actualizar</button> 
-                          <button type="button" class="btn btn-danger">Cancelar</button>
+                          <button type="button" class="btn btn-danger" id="cancelar">Cancelar</button>
                       </div>                 
                 </div>
                 <div id="vehiculo" class="tab-pane fade">
-                      <a href="" class="pull-right"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</a>
+                      <a id="show1" class="button pull-right"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</a>
                   <h3>Mi vehiculo</h3>
                   <div class="container">
                     <p><strong>Marca: </strong></p>
@@ -70,7 +70,7 @@
                   </div>
                   <div class="container">
                     <p><strong>Modelo: </strong></p>
-                    <div class="moddelo-input col-sm-4 col-sm-offset-2">
+                    <div class="modelo-input col-sm-4 col-sm-offset-2">
                       <input type="text" class="form-control" name="modelo">
                     </div>
                   </div>
@@ -93,9 +93,9 @@
                       </div> 
                     </div>
                     <hr>
-                    <div class="buttons">
+                    <div class="buttons-vehiculos">
                         <button type="submit" class="btn btn-primary ">Actualizar</button> 
-                        <button type="button" class="btn btn-danger">Cancelar</button>
+                        <button type="button" class="btn btn-danger" id="cancelar-v">Cancelar</button>
                     </div>        
                 </div>
                 <div id="reservacion" class="tab-pane fade">

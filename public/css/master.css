@@ -316,3 +316,12 @@ padding-bottom: 1.5rem;
     text-align:center;
     margin:auto;
 }
+.buttons-vehiculos{
+	position: relative; 
+    width:100%; left:0;
+    text-align:center;
+    margin:auto;
+}
+#show,#show1{
+	cursor: pointer;
+}
