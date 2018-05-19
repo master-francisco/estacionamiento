@@ -28,7 +28,7 @@
     float: left;
 }
 .discapacitados{
-    background-color: navy;
+    background-color: blue;
     width: 20px;
     height: 20px;
     margin: 2px;
@@ -55,11 +55,23 @@
     margin: 2px;
     float: left;     
 }
+.apartado{
+    background-color:lightsalmon;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    float: left;     
+}
 .contain-table{
     clear:both;
     padding-top:10px;
     position: absolute;
     margin-bottom: 20px;
+}
+.lug-d{
+    background-color: blue;
+    border-left: 1px solid white;
+    padding: 6px;
 }
 .lug-m{
     background-color: #955F20;

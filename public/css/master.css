@@ -204,6 +204,19 @@ border-top: none;
 overflow: hidden;
 padding: 0 !important ;
 }
+#informacion .container a{
+	padding-left:50px;
+	text-decoration: none;
+	color:rgb(220,220,220);
+}
+#vehiculo .container a{
+	padding-left:50px;
+	text-decoration: none;
+	color:rgb(220,220,220);
+}
+#avatarInput{
+	display:none;
+}
 .image{
 	background-color:#7BECEC;
 	height: 120px;

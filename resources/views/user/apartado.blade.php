@@ -28,32 +28,41 @@
                         <div class="ocupado"></div>
                         <span>Ocupado</span>  
                 </div>
+                <div class="container-a">
+                    <div class="apartado"></div>
+                    <span>Apartado</span>  
+            </div>
             </div>
             <hr>
                    <div class="contain-table col-sm-8 col-sm-offset-4">
                         <table id="arriba">
                                 <tbody>
                                     <tr>
-                                        <td class="lug-m"><a href="">A1</a></td>
-                                        <td class="lug-m"><a href="">A2</a></td>
-                                        <td class="lug-m"><a href="">A3</a></td>
-                                        <td class="lug-m"><a href="">A4</a></td>
-                                        <td class="lug-m"><a href="">A5</a></td>
-                                        <td class="lug-m"><a href="">A6</a></td>
-                                        <td class="lug-m"><a href="">A7</a></td>
-                                        <td class="lug-m"><a href="">A8</a></td>
-                                        <td class="lug-m"><a href="">A9</a></td>
-                                        <td class="lug-m"><a href="">A10</a></td>
-                                        <td class="lug-m"><a href="">A11</a></td>
-                                        <td class="lug-m"><a href="">A12</a></td>
-                                        <td class="lug-m"><a href="">A13</a></td>
+                                        <td class="lug-d"
+                                            data-placas=""
+                                            data-marca=""
+                                            data-nombre=""
+                                            data-status=""
+                                        >A1</td>
+                                        <td class="lug-m">A2</td>
+                                        <td class="lug-m">A3</td>
+                                        <td class="lug-m">A4</td>
+                                        <td class="lug-m">A5</td>
+                                        <td class="lug-m">A6</td>
+                                        <td class="lug-m">A7</td>
+                                        <td class="lug-m">A8</td>
+                                        <td class="lug-m">A9</td>
+                                        <td class="lug-m">A1</td>
+                                        <td class="lug-m">A1</td>
+                                        <td class="lug-m">A1</td>
+                                        <td class="lug-m">A1</td>
                                     </tr>
                                 </tbody>
                             </table>
                                     <table id="lado-izq">
                                             <tbody>
                                                 <tr>
-                                                    <td class="lug-m">C1</td>
+                                                    <td class="lug-d">C1</td>
                                                     <td class="lug-m">C2</td>
                                                     <td class="lug-m">C3</td>
                                                     <td class="lug-m">C4</td>
@@ -66,7 +75,7 @@
                                                     <td class="lug-m">C11</td>
                                                     <td class="lug-m">C12</td>
                                                     <td class="lug-m">C13</td>
-                                                    <td class="lug-m">C14</td>
+                                                    <td class="lug-d">C14</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -141,7 +150,7 @@
                                     <table id="abajo">
                                             <tbody>
                                                 <tr>
-                                                    <td class="lug-m">B1</td>
+                                                    <td class="lug-d">B1</td>
                                                     <td class="lug-m">B2</td>
                                                     <td class="lug-m">B3</td>
                                                     <td class="lug-m">B4</td>
@@ -158,5 +167,31 @@
                                             </tbody>
                                         </table>
            </div>
-         
+           <button type="button" id="modal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+          </button>
+          
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                        <img src="../../imagenes/log.png" alt="">
+                        <img src="../../imagenes/nombre.png" alt="" class="nombre">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h3>Información sobre el apartado</h3>
+                  <p><strong>Nombre:</strong><a class="datos">Miriam Yarazeth Becerra Real </a></p>
+                  <p><strong>Placas:</strong><a class="datos">JDF-96-45</a></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
 @endsection

@@ -1,10 +1,30 @@
-var $avatarInput, $avatarImage;
+var $avatarInput, $avatarImage, $avatarForm;
+var avatarUrl;
     $(function(){
         $avatarInput = $('#avatarInput');
         $avatarImage = $('#avatarImage');
 
     $avatarImage.on('click',function(){
         $avatarInput.click();
+    });
+
+    avatarUrl = $('avatarForm').attr('action');
+    $avatarInput.on('change',function(){
+        var formData = new FormData();
+        formData.append('image',$avatarInput[0].files[0]);
+       $.ajax({
+        url: avatarUrl,
+        method: 'POST',
+        data:formData,
+        processData: false,
+        contentType:false
+       })
+       .done(function(data){
+        alert('hi');
+       })
+       .fail(function(){
+        console.log('el elemento no se puede subir');
+       });
     });
 });
     //profile ->informacion
@@ -13,6 +33,7 @@ var $avatarInput, $avatarImage;
     $(".carrera-input").hide();
     $(".grado-input").hide();
     $(".turno-input").hide();
+    $(".number-input").hide();
     $(".buttons").hide();
     $(document).ready(function(){
        $("#show").click(function(){
@@ -41,6 +62,11 @@ var $avatarInput, $avatarImage;
      });
      $(document).ready(function(){
         $("#show").click(function(){
+         $(".number-input").show();
+        });
+     });
+     $(document).ready(function(){
+        $("#show").click(function(){
          $(".buttons").show();
         });
      });
@@ -52,6 +78,7 @@ var $avatarInput, $avatarImage;
             $(".grado-input").hide();
             $(".turno-input").hide();
             $(".buttons").hide();
+            $(".number-input").hide();
         });
      });
      //profile ->vehiculo
