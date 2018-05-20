@@ -53,15 +53,35 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
+                            @if(Auth::user()->role == 'EDITOR')
+                            <li><a href="{{'/apartado'}}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Apartado</a></li>
+                            <li class="dropdown">
+                                    <li><a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Logout
+                                    </a></li>
+                            @else
+                            @if(Auth::user()->role == 'ADMIN')
+                             <li><a href="{{'/dashboard'}}">Admin Page</a></li>
+                             <li class="dropdown">
+                                    <li><a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Logout
+                                    </a></li>
+                             @else
                             <li><a href="{{'/home'}}">Inicio</a></li>
                             <li><a href="{{'/perfil'}}"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil</a></li>
                             <li><a href="{{'/apartado'}}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Apartado</a></li>
                             <li class="dropdown">
-                                <li><a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                             <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Logout
-                                </a></li>
+                                    <li><a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Logout
+                                    </a></li>
+                                @endif
+                            @endif
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>

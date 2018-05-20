@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
+use App\Code;
 class CreateCodesTable extends Migration
 {
     /**
@@ -18,6 +18,7 @@ class CreateCodesTable extends Migration
             $table->string('code');
             $table->string('nombre');
             $table->string('email');
+            $table->string('tipo_usuario');
             $table->timestamps();
         });
     }

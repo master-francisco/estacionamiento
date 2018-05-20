@@ -9,9 +9,30 @@ use App\User;
 class UserController extends Controller
 {
     
-    public function getInformation(Request $request){
-        $information = PersonalInformation::where('email', '=', Auth::user()->email)->first();
+    public function createUser(Request $request){
+        $user = new User();
+        $data = $request->all();
+        $user ->name=$data['name'];
+        $user->surname=$data['surname'];
+        $user->role=$data['role'];
+        $user->email=$data['email'];
+        $user->password=bcrypt($data['password']);
+
+        if(!$user->save()){
+
+        }
+        return redirect()->back();
+        $user->save();
         
+    }
+    public function getUsers()
+    {
+        $users = User::orderBy('created_at', 'asc')->get();
+        return view('admin.settings-user', ['users' => $users]);
+    }
+    public function getViewUser()
+    {
+        return view('admin.user');
     }
     public function imageUpdate(Request $request){
         if ($request->hasFile('image')) {
