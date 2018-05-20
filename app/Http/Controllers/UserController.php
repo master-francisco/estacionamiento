@@ -20,9 +20,11 @@ class UserController extends Controller
 
         if(!$user->save()){
 
+        }else{
+            $user->save();
+         alert('Usuario creado');  
         }
         return redirect()->back();
-        $user->save();
         
     }
     public function getUsers()
@@ -128,4 +130,14 @@ class UserController extends Controller
         private function personalInformationExists(){
         return (PersonalInformation::where('email', '=', Auth::user()->email)->first() != null);
         }
+    
+    public function deleteUser($id_user){
+        $user=User::where('id',$id_user)->first();
+
+        if($user->id == Auth::user()->id){
+            return redirect()->back();
+        }
+        $user->delete();
+        return redirect()->back();
+    }
 }

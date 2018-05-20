@@ -27,4 +27,14 @@ class CodesController extends Controller
     $codes = Code::orderBy('created_at', 'asc')->get();
     return view('admin.settings-code', ['codes' => $codes]);
    }
+   public function deleteCode($id_code){
+    $code=Code::where('id',$id_code)->first();
+
+    if(!$code->delete()){
+
+    }else{
+        $code->delete();
+    }
+    return redirect()->back();
+}
 }

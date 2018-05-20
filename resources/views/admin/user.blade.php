@@ -42,8 +42,8 @@
                   <option value="USER">Alumno</option>
                   <option value="EDITOR">Guardia</option>
                   <option value="USER">Maestro</option>
-                  <option value="ADMIN">Proveedor</option>
-                  <option value="USER">Invitado</option>
+                  <option value="EXT">Proveedor</option>
+                  <option value="EXT">Invitado</option>
                 </select>
               </div>
            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">

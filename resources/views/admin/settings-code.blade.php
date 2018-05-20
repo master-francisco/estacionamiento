@@ -21,7 +21,7 @@
                         <td>{{$code->tipo_usuario}}</td>
                         <td>
                                 <a class="btn btn-primary btn-xs"  href="" >Edit</a>
-                                <a class="btn btn-danger btn-xs" href="" >Delete</a>
+                                <a class="btn btn-danger btn-xs" href="{{ route('code.delete',['id_code' => $code->id] )}}" >Delete</a>
                             </td>
                     </tr>
                     @endforeach

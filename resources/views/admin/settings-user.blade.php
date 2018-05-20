@@ -21,7 +21,7 @@
                         <td>{{$user->email}}</td>
                         <td>
                                 <a class="btn btn-primary btn-xs"  href="" >Edit</a>
-                                <a class="btn btn-danger btn-xs" href="" >Delete</a>
+                                <a class="btn btn-danger btn-xs" href="{{ route('user.delete',['id_user' => $user->id] )}}" >Delete</a>
                             </td>
                     </tr>
                     @endforeach
