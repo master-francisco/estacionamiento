@@ -39,4 +39,7 @@ class User extends Authenticatable
     public function vehicle(){
         return $this->hasOne('App\Vehicle');
     }
+    public function spaceInfo(){
+        return $this->hasOne('App\SpaceInformation');
+    }
 }

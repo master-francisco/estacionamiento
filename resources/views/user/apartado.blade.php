@@ -52,10 +52,10 @@
                                         <td class="lug-m">A7</td>
                                         <td class="lug-m">A8</td>
                                         <td class="lug-m">A9</td>
-                                        <td class="lug-m">A1</td>
-                                        <td class="lug-m">A1</td>
-                                        <td class="lug-m">A1</td>
-                                        <td class="lug-m">A1</td>
+                                        <td class="lug-m">A10</td>
+                                        <td class="lug-m">A11</td>
+                                        <td class="lug-m">A12</td>
+                                        <td class="lug-m">A13</td>
                                     </tr>
                                 </tbody>
                             </table>

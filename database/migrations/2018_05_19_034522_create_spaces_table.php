@@ -16,11 +16,6 @@ class CreateSpacesTable extends Migration
         Schema::create('spaces', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('tipo_lugar');
-            $table->date('fecha_entrada')->nullable();
-            $table->date('fecha_salida')->nullable();
-            $table->string('status')->default('disponible');
-            $table->timestamps();
         });
     }
 
