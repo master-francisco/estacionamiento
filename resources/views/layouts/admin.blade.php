@@ -27,7 +27,7 @@
             
                         <ul class="list-unstyled components">
                             <li class="active">
-                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Usuarios</a>
+                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuarios</a>
                                 <ul class="collapse list-unstyled" id="homeSubmenu">
                                         <li><a href="{{'/create-user'}}">Crear</a></li>
                                         <li><a href="{{'/settings'}}">Configurar</a></li>
@@ -40,6 +40,7 @@
                                         <li><a href="{{'/settings-code'}}">Configurar</a></li>
                                     </ul>
                             </li>
+                            <li><a href="{{'/home'}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
                             <li>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

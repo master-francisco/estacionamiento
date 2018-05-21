@@ -239,3 +239,17 @@ ul.CTAs a {
     width: 70% !important;
     margin-left: 5px !important;
 }
+#log-admin{
+    height: 80px;
+    position:absolute;
+    margin-left:20px;
+    float: left;
+}
+.container-admin h1{
+    position: relative;
+    margin-left: 150px;
+}
+.container-admin{
+    height: 80px;
+    width: 100%;
+}

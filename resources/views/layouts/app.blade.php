@@ -64,6 +64,7 @@
                             @else
                             @if(Auth::user()->role == 'ADMIN')
                              <li><a href="{{'/dashboard'}}">Admin Page</a></li>
+                             <li><a href="{{'/apartado'}}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Apartado</a></li>
                              <li class="dropdown">
                                     <li><a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
