@@ -15,15 +15,15 @@ class CreateSpacesInformationTable extends Migration
     {
         Schema::create('spaces_information', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipo_lugar')->nullable();
-            $table->string('fecha_entrada')->nullable();
-            $table->string('fecha_salida')->nullable();
+            $table->string('hora_entrada')->nullable();
+            $table->string('hora_salida')->nullable();
+            $table->string('tiempo')->default('10 min');
             $table->string('status')->default('disponible');
-            $table->integer('user_id')->unsigned()->index();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+            $table->integer('space_id')->unsigned()->index();
+            $table->foreign('space_id')
+            ->references('id')
+            ->on('spaces')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

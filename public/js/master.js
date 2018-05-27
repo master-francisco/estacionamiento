@@ -10,21 +10,7 @@ var avatarUrl;
 
     avatarUrl = $('avatarForm').attr('action');
     $avatarInput.on('change',function(){
-        var formData = new FormData();
-        formData.append('image',$avatarInput[0].files[0]);
-       $.ajax({
-        url: avatarUrl,
-        method: 'POST',
-        data:formData,
-        processData: false,
-        contentType:false
-       })
-       .done(function(data){
-        alert('hi');
-       })
-       .fail(function(){
-        console.log('el elemento no se puede subir');
-       });
+      
     });
 });
     //profile ->informacion
@@ -129,4 +115,4 @@ var avatarUrl;
             $(".buttons-vehiculos").hide();
         });
      });
- 
+     $('.clockpicker').clockpicker('show');

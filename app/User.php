@@ -33,13 +33,13 @@ class User extends Authenticatable
     public function code(){
         return $this->belongsTo('App\Code');
     }
-    public function space(){
-        return $this->hasOne('App\Space');
-    }
     public function vehicle(){
         return $this->hasOne('App\Vehicle');
     }
-    public function spaceInfo(){
-        return $this->hasOne('App\SpaceInformation');
+    public function space(){
+        return $this->hasOne('App\Space');
+    }
+    public function apartado(){
+        return $this->hasOne('App\Apartado');
     }
 }

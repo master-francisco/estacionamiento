@@ -8,7 +8,7 @@ class SpaceInformation extends Model
 {
     protected $table = 'spaces_information';
 
-    public function users(){
-        return $this->hasOne('App\User');
+    public function space(){
+        return $this->belongsTo('App\Space');
     }
 }

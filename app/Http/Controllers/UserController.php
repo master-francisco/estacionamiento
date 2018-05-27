@@ -53,7 +53,7 @@ class UserController extends Controller
 			$user = Auth::user();
 			$user->image = $filename;
             $user->save();
-            $data['user'] = $path;
+            return redirect()->back();
 		}
 	}
     

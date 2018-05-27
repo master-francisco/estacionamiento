@@ -15,7 +15,10 @@ class Space extends Model
         'nombre',
     ];
 
-    public function users(){
-        return $this->hasOne('App\User');
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+    public function spaceInfo(){
+        return $this->hasOne('App\SpaceInformation');
     }
 }

@@ -15,11 +15,11 @@ if($vehiculo == null){
 <div class="col-sm-4 perfil">
     <div class="image"></div>
     <div class="image-prof">
-        <form action="{{url('/perfil-image')}}" id="avatarForm">
+        <form action="{{route('update.image')}}" id="avatarForm">
           {{csrf_field()}}
           <input type="file" name="image" id="avatarInput">
-        </form>
         <img src="/imagenes/users/{{Auth::user()->image}}" alt="" id="avatarImage">
+      </form>
     </div>
     <p class="col-sm-8 col-sm-offset-2">
       {{Auth::user()->name}} {{Auth::user()->surname}}

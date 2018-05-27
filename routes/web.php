@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil',['uses'=>'UserController@index','middleware'=>'auth'])->name('perfil');
 Route::get('/apartado',['uses'=>'ApartadoController@index','middleware'=>'auth'])->name('apartado');
 Route::get('/dashboard',['uses'=>'UserController@inicio','middleware'=>'auth'])->name('dashboard');
-Route::post('/perfil-image', 'UserController@imageUpdate');
+Route::post('/perfil-image',[ 'uses' =>'UserController@imageUpdate','as'=>'update.image','middleware'=>'auth']);
 Route::post('/perfil-update',['uses'=>'UserController@UpdateInformacion','as'=>'update.information','middleware'=>'auth']);
 Route::post('/perfil-vehicle-update',['uses'=>'VehicleController@updateVehicle','as'=>'update.vehicle','middleware'=>'auth']);
 Route::get('/create-user',['uses'=>'UserController@getViewUser','middleware'=>'auth'])->name('user');
@@ -32,3 +32,5 @@ Route::get('/codes',['uses'=>'CodesController@index','middleware'=>'auth'])->nam
 Route::post('/create-code',['uses'=>'CodesController@createCode','as'=>'create.code','middleware'=>'auth']);
 Route::get('/settings-code',['uses'=>'CodesController@getCodes','middleware'=>'auth'])->name('code');
 Route::get('/settings/code-delete/{id_code}',['uses'=>'CodesController@deleteCode','as'=>'code.delete','middleware'=>'auth']);
+Route::get('/apartado',['uses'=>'ApartadoController@getApartadoA','middleware'=>'auth'])->name('apartado');
+Route::post('/apartado/update/{id_user}',['uses'=>'SpaceController@updateSpace','as'=>'update.space','middleware'=>'auth']);
