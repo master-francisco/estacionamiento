@@ -5,7 +5,7 @@ var avatarUrl;
         $avatarImage = $('#avatarImage');
 
     $avatarImage.on('click',function(){
-        $avatarInput.click();
+        alert('funcion no disponible');
     });
 
     avatarUrl = $('avatarForm').attr('action');

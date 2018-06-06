@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Code;
+use \Toastr;
 class CodesController extends Controller
 {
    public function index(){
@@ -18,10 +19,12 @@ class CodesController extends Controller
        $code->tipo_usuario=$data['tipo_usuario'];
 
        if(!$code->save()){
-
+        Toastr::warning("El codigo no se creado");
        }
-       return redirect()->back();
+       Toastr::success("El codigo se creado  correctamente");
        $code->save();
+       return redirect()->back();
+       
    }
    public function getCodes(){
     $codes = Code::orderBy('created_at', 'asc')->get();

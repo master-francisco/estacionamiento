@@ -15,7 +15,7 @@ if($vehiculo == null){
 <div class="col-sm-4 perfil">
     <div class="image"></div>
     <div class="image-prof">
-        <form action="{{route('update.image')}}" id="avatarForm">
+        <form action="" id="avatarForm">
           {{csrf_field()}}
           <input type="file" name="image" id="avatarInput">
         <img src="/imagenes/users/{{Auth::user()->image}}" alt="" id="avatarImage">
@@ -36,7 +36,7 @@ if($vehiculo == null){
                 <div id="informacion" class="tab-pane fade in active">
                         <a class="button pull-right"  id="show"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</a>
                   <h3>Información Personal</h3>
-                  <form action="{{route('update.information')}}" method="post" enctype="multipart/form-data">
+                  <form action="{{route('update.info')}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="container">
                       <p><strong>Nombre:</strong><a>{{Auth::user()->name}}</a></p>
@@ -107,7 +107,7 @@ if($vehiculo == null){
                   <div class="container">
                     <p><strong>Placas: </strong></span><a>{{$vehiculo->placas}}</a></p>
                     <div class="placas-input col-sm-4 col-sm-offset-2">
-                      <input type="text" class="form-control" name="placas">
+                      <input type="text" class="form-control" name="placas" value="{{$vehiculo->placas}}">
                     </div>
                   </div>
                   <div class="container">

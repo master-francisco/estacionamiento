@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Vehicle;
 use Auth;
 use App\User;
+use \Toastr;
 class VehicleController extends Controller
 {
 
@@ -33,6 +34,7 @@ class VehicleController extends Controller
         }
         if(!$informacion->save()){
         }
+        Toastr::success("La información del vehiculo se actualizado  correctamente");
             $informacion->save();
         return redirect()->back();
     }

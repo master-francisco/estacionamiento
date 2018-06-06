@@ -41,10 +41,9 @@
                                     <tr>
                                     @for($i = 0; $i<=12;$i++)
                                         <td class="lug-m"
-                                            data-placas=""
-                                            data-marca=""
-                                            data-nombre=""
-                                            data-status=""
+                                            data-hora_entrada="{{['spaceInfo'] ['hora_entrada']}}"
+                                            data-hora_salida="{{['spaceInfo'] ['hora_salida']}}"
+                                            data-status="{{['spaceInfo']['status']}}"
                                         >{{$apartado[$i] ['nombre']}}</td>
                                         @endfor
                                     </tr>

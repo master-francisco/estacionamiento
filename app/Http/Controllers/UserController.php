@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\PersonalInformation;
 use Auth;
 use App\User;
+use \Toastr;
 class UserController extends Controller
 {
     protected function validator(array $data)
@@ -19,6 +20,7 @@ class UserController extends Controller
     }
     public function createUser(Request $request){
         $user = new User();
+        $personal = new PersonalInformation();
         $data = $request->all();
         $user ->name=$data['name'];
         $user->surname=$data['surname'];
@@ -27,8 +29,9 @@ class UserController extends Controller
         $user->password=bcrypt($data['password']);
 
         if(!$user->save()){
-
+            Toastr::warning("El usuario no se creado");
         }else{
+            Toastr::success("El usuario se creado  correctamente");
             $user->save();
     
         }
@@ -80,58 +83,60 @@ class UserController extends Controller
             $informacion->email=$email;
         }
         if(!$informacion->save()){
+            Toastr::success("El usuario no se actualizado  correctamente");
+        }else{
+            $informacion->save();
         }
-            
+       
         return redirect()->back();
     }
 
     public function UpdateInformation(Request $request){
-        if($this->personalInformationExists()){
-            $info = PersonalInformation::where('email', '=', Auth::user()->email)->first();
-            $career=$request->get('career');
-            $grade=$request->get('grade');
-            $turn=$request->get('turn');
-            $number_phone=$request->get('number_phone');
-        if($career != null){
-            $info->career=$career;
+        $datos = PersonalInformation::where('email','=', Auth::user()->email)->first();
+        $career = $request->get('career');
+        $grade = $request->get('grade');
+        $turn = $request->get('turn');
+        $phone = $request->get('number_phone');
+
+        if($career !=null){
+            $datos ->career = $career;
         }
-        if($grade != null){
-            $info->grade=$grade;
+        if($grade !=null){
+            $datos->grade = $grade;
         }
         if($turn !=null){
-            $info->turn=$turn;
+            $datos->turn = $turn;
         }
-        if($number_phone !=null){
-            $info->number_phone=$number_phone;
+        if($phone !=null){
+            $datos->number_phone = $phone;
         }
-        if(!$info->save()){
-         
+        if(!$datos->save()){
+        Toastr::success("La informacion no se actualizado");
+        }
+        else{
+            $datos->save();
+            Toastr::success("La informacion se actualizado correctamente");
         }
         return redirect()->back();
-        $info->save();
     }
-        }
-
-    private function createInformation(Request $request){
+    private function createInformacion(Request $request){
         if(PersonalInformation::where('email', '=', Auth::user()->email)->first() == null){
             $personalInformation = new PersonalInformation;
             $personalInformation->fill($request->all());
             $personalInformation->save();
-    }
+            }
 
-}
-        public function updateInformacion(Request $request)
+        }
+        public function ActualizarInformacion(Request $request)
         {
 
         if (!$this->personalInformationExists()) {
             $request->request->add(['email' => Auth::user()->email]);
-            $this->createInformation($request);
+            $this->createInformacion($request);
         }
-        else if($request->has('name') || $request->has('surname')){
-            $this->updateUser($request);
-            }
-        else if($request->has('career') || $request->has('grade')||$request->has('turn')||$request->has('number_phone')){
+        else if($request->has('career') || $request->has('grade')||$request->has('turn')||$request->has('number_phone') && $request->has('name')|| $request->has('surname')){
             $this->UpdateInformation($request);
+            $this->updateUser($request);
         }
         return redirect()->back();
         }
@@ -143,8 +148,10 @@ class UserController extends Controller
         $user=User::where('id',$id_user)->first();
 
         if($user->id == Auth::user()->id){
+            Toastr::warning("El usuario no se puede eliminar");
             return redirect()->back();
         }
+        Toastr::success("El usuario se eliminado  correctamente");
         $user->delete();
         return redirect()->back();
     }
