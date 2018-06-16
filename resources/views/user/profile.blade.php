@@ -125,10 +125,33 @@ if($vehiculo == null){
                 </div>
                 <div id="reservacion" class="tab-pane fade">
                   <h3>Mis Reservaciones</h3>
-                  <div class="container sr">
+                  <div class="container-sr">
                       <img src="../../imagenes/calendar-sr.png" alt="">
-                      <strong>Sin Reservación</strong>
+                      <div class="container-info">
+                          <h1>Sin Reservación</h1>
+                      </div>
+                      
                     </div>
+                    <div class="container-a">
+                      <img src="../../imagenes/calendar-a.png" alt="">
+                      <div class="container-datos">
+                          <h1>En proceso...</h1>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="container-o">
+                            <img src="../../imagenes/calendar-o.png" alt="">
+                           <div class="container-datos">
+                             <h1>Activo</h1>
+                            <p><strong>Placas:</strong>JMY-98-10</p>
+                            <p><strong>Carrera:</strong>Ingenieria en software</p>
+                            <p><strong>Codigo:</strong>I-097</p>
+                            <p><strong>Carro:</strong>Volswagen</p>                      
+                            <p><strong>Color:</strong>Verde</p>
+                           </div>
+                          </div>
+                    </div>
+                    
                 </div>
  </div>
 @endsection

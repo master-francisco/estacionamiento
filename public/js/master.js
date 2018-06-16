@@ -116,3 +116,7 @@ var avatarUrl;
         });
      });
      $('.clockpicker').clockpicker('show');
+     $('.container-a').hide();
+ 
+     $('.container-sr').hide();
+ 

@@ -271,7 +271,10 @@ padding-bottom: 1.5rem;
 	font-size: 30px;
 	font-family: Arial, Helvetica, sans-serif;
 }
-
+.a{
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+}
 .btn-danger{
 	background: red !important;
 	border: none !important;
@@ -337,4 +340,41 @@ padding-bottom: 1.5rem;
 }
 #show,#show1{
 	cursor: pointer;
+}
+.container-sr img{
+	float: left;
+	height: 180px;
+}
+.container-info{
+	margin-left: 200px;
+}
+.container-info h1{
+	padding: 1rem;
+	background: red;
+	color:white;
+	font-size:20px;
+	width: 400px;
+}
+.container-o img{
+float: left;
+position: absolute;
+height: 180px;
+}
+.container-datos h1{
+	font-size: 30px;
+	padding:0.5rem;
+	color:white;
+	background: #1BAA00;
+}
+.container-datos{
+	margin-left: 200px;
+	width: 400px;
+}
+.container-datos p strong{
+	color:lightgray;
+	padding: 10px;
+}
+.container-datos p{
+	margin-right: 10px;
+	font-size:20px;
 }
