@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+@include('includes/modal-apartado');
         <div class="container-principal col-sm-7 col-sm-offset-2">
                 <h3>Simbologia</h3>
                 <div class="container-a">
@@ -40,12 +40,14 @@
                                    
                                     <tr>
                                     @for($i = 0; $i<=12;$i++)
-                                        <td class="lug-m"
-                                            data-hora_entrada="{{['spaceInfo'] ['hora_entrada']}}"
-                                            data-hora_salida="{{['spaceInfo'] ['hora_salida']}}"
-                                            data-status="{{['spaceInfo']['status']}}"
-                                        >{{$apartado[$i] ['nombre']}}</td>
-                                        @endfor
+                                        <td class="lug-m space"
+                                            data-toggle="modal_space"
+                                            data-target="modal_space"
+                                            data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
+                                            data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
+                                            data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
+                                        >{{$apartado[$i]['nombre']}}</td>
+                                    @endfor
                                     </tr>
                                 </tbody>
                             </table>
@@ -53,11 +55,12 @@
                                             <tbody>
                                                 <tr>
                                                         @for($i = 13; $i<=25;$i++)
-                                                        <td class="lug-m"
-                                                            data-placas=""
-                                                            data-marca=""
-                                                            data-nombre=""
-                                                            data-status=""
+                                                        <td class="lug-m space"
+                                                        data-toggle="modal_space"
+                                                        data-target="modal_space"
+                                                        data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
+                                                        data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
+                                                        data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
                                                         >{{$apartado[$i] ['nombre']}}</td>
                                                         @endfor
                                                 </tr>
@@ -67,21 +70,23 @@
                                                     <tbody>
                                                         <tr>
                                                         @for($i = 26; $i<=38;$i++)
-                                                        <td class="lug-m"
-                                                            data-placas=""
-                                                            data-marca=""
-                                                            data-nombre=""
-                                                            data-status=""
+                                                        <td class="lug-m space"
+                                                        data-toggle="modal_space"
+                                                        data-target="modal_space"
+                                                        data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
+                                                        data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
+                                                        data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
                                                         >{{$apartado[$i] ['nombre']}}</td>
                                                         @endfor
                                                         </tr>
                                                         <tr>
                                                         @for($i = 39; $i<=51;$i++)
-                                                        <td class="lug-m"
-                                                            data-placas=""
-                                                            data-marca=""
-                                                            data-nombre=""
-                                                            data-status=""
+                                                        <td class="lug-m space"
+                                                        data-toggle="modal_space"
+                                                        data-target="modal_space"
+                                                        data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
+                                                        data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
+                                                        data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
                                                         >{{$apartado[$i] ['nombre']}}</td>
                                                         @endfor
                                                         </tr>
@@ -91,23 +96,25 @@
                                                     <tbody>
                                                         <tr>
                                                             @for($i = 52; $i<=64;$i++)
-                                                            <td class="lug-m"
+                                                            <td class="lug-m space"
                                                                 @if($apartado[$i]['space_info'])
-                                                                    data-placas="{{ $apartado[$i]['space_info'] }}"
-                                                                    data-marca=""
-                                                                    data-nombre=""
-                                                                    data-status=""
+                                                                data-toggle="modal_space"
+                                                                data-target="modal_space"
+                                                                data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
+                                                                data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
+                                                                data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
                                                                 @endif
                                                             >{{$apartado[$i] ['nombre']}}</td>
                                                             @endfor
                                                         </tr>
                                                         <tr>
                                                             @for($i = 65; $i<=77;$i++)
-                                                            <td class="lug-m"
-                                                                data-placas=""
-                                                                data-marca=""
-                                                                data-nombre=""
-                                                                data-status=""
+                                                            <td class="lug-m space"
+                                                            data-toggle="modal_space"
+                                                            data-target="modal_space"
+                                                            data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
+                                                            data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
+                                                            data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
                                                             >{{$apartado[$i] ['nombre']}}</td>
                                                             @endfor
                                                         </tr>
@@ -117,11 +124,12 @@
                                             <tbody>
                                                 <tr>
                                                         @for($i = 78; $i<=90;$i++)
-                                                        <td class="lug-m"
-                                                            data-placas=""
-                                                            data-marca=""
-                                                            data-nombre=""
-                                                            data-status=""
+                                                        <td class="lug-m space"
+                                                        data-toggle="modal_space"
+                                                        data-target="modal_space"
+                                                        data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
+                                                        data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
+                                                        data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
                                                         >{{$apartado[$i] ['nombre']}}</td>
                                                         @endfor
                                                 </tr>
@@ -129,37 +137,19 @@
                                         </table>
         </div>
            
-<div class="col-sm-5 col-sm-offset-3">
-    <form action="" method="post">
-        <div class="form-group">
-            <label for="">Hora de entrada</label>
-            <div class="input-group clockpicker " data-autoclose="true">
-                <input type="text" class="form-control" value="" name="hora_entrada">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                </span>
-                </div>
-        </div>
-        <div class="form-group">
-            <label for="">Hora de salida</label>
-            <div class="input-group clockpicker " data-autoclose="true">
-                <input type="text" class="form-control" value="" name="hora_salida">
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-time"></span>
-                </span>
-                </div>
-        </div>
-        <div class="form-group">
-                <label for="">Status</label>
-                <select class="form-control" id="status" name="status">
-                 <option selected disabled>Selecciona una opción</option>
-                  <option value="Apartado">Apartado</option>
-                  <option value="Ocupado">Ocupado</option>
-                  <option value="Disponible">Disponible</option>
-                </select>
-              </div>
-            <button type="submit" class="btn btn-success">Enviar</button>
-    </form>
-</div>
+
+
+<script>
+    var lugares = document.querySelectorAll('.space');
+    lugares.forEach(function(lugar) {
+        lugar.addEventListener('click', function(event) {
+            var element = event.target;
+            $('#hora_entrada').val(element.dataset.hora_entrada);
+            $('#hora_salida').val(element.dataset.hora_salida);
+            $('#status').val(element.dataset.status);
+            $('#modal_space').modal();
+        });
+    });
+</script>
 
 @endsection

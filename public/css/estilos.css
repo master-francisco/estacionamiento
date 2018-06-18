@@ -11,6 +11,9 @@
     margin-left: 6px;
     margin-right: 6px;
 }
+td{
+    cursor:pointer;
+}
 .alumno{
     background-color:darkgreen;
     width: 20px;

@@ -190,6 +190,23 @@ position: relative;
 				position: relative;
 				top: -50px;
 			}
+			.container-sr img{
+				float: left;
+				height: 80px;
+			}
+			.container-info{
+				margin-left: 50px;
+			}
+			.container-info h1{
+				padding: 1rem;
+				background: red;
+				color:white;
+				font-size:20px;
+				width:auto;
+			}
+			#reservación{
+				overflow: scroll;
+			}
 	}
 
 .perfil{
