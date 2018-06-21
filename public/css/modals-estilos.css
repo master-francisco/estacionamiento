@@ -5,15 +5,8 @@
 .modal-header img{
     height: 42px;
 }
-.modal-body .datos{
-    text-decoration: none !important;
-    color:lightgray !important;
-    padding-left:20px !important;
-    font-size: 25px;
-}
-.modal-body p{
-    border-bottom: 2px solid rgba(240,240,240,0.4);;
-    font-size: 20px;
+.modal-body{
+    margin-top:20px !important;
 }
 .modal-body h3{
     text-align: center;
@@ -22,5 +15,15 @@
 	border: none;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
-	background-color: skyblue;
+    background-color: skyblue;
+}
+#modal_user .modal-body{
+    height: 80px;
+}
+.modal-footer #ap .btn-success{
+    border: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+    background-color: skyblue !important; 
+    position: absolute;
 }

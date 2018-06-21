@@ -11,8 +11,8 @@
           </button>
         </div>
         <div class="modal-body">
-          <h3>Información sobre el apartado</h3>
-          <div class="col-sm-12">
+          <div class="info">
+              <h3>Información sobre el apartado</h3>
             <form action="" method="post">
               <div class="form-group">
                 <label for="">Nombre</label>
@@ -42,7 +42,6 @@
                 </div>
                 <div class="form-group">
                         <label for="">Status</label>
-                      
                         <select class="form-control" id="status" name="status">
                          <option selected disabled>Selecciona una opción</option>
                           <option value="apartado">Apartado</option>
@@ -51,7 +50,7 @@
                         </select>
                       </div>
            
-        </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary col-sm-6 col-xs-6 col-sm-offset-3 col-xs-offset-3">Save changes</button>

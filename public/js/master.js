@@ -120,3 +120,25 @@ var avatarUrl;
  
      $('.container-sr').hide();
  
+ var lugares = document.querySelectorAll('.space');
+    lugares.forEach(function(lugar) {
+        lugar.addEventListener('click', function(event) {
+            var element = event.target;
+            var { hora_entrada, hora_salida, status } = element.dataset;
+            $('#hora_entrada').val(element.dataset.hora_entrada);
+            $('#hora_salida').val(element.dataset.hora_salida);
+            $('#status').val(element.dataset.status);
+            $('#name').val(element.dataset.name);
+            $('#placas').val(element.dataset.placas);
+            $('#modal_user').modal();
+            if(hora_entrada && hora_salida && status){
+            $('#ap').hide();
+            $('#info').html('Este lugar ya ha sido ocupado');
+            }else{
+                $('#ap').show();
+                $('#info').html('');
+            }
+               
+            $('#modal_space').modal();
+        });
+    });

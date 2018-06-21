@@ -1,16 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-@include('includes/modal-apartado');
+@if(Auth::user()->role == "USER")
+@include('includes/modal-user')
+
+@else
+@include('includes/modal-apartado')
+@endif
         <div class="container-principal col-sm-7 col-sm-offset-2">
                 <h3>Simbologia</h3>
                 <div class="container-a">
                         <div class=" alumno"></div>
                         <span>Disponible alumno</span>
-                </div>
-                <div class="container-m">
-                        <div class="maestro"></div>
-                        <span>Disponible maestros</span>  
                 </div>
                 <div class="container-v">
                         <div class="visitante"></div>
@@ -46,6 +47,8 @@
                                             data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
                                             data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
                                             data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
+                                            data-placas="{{$apartado[$i]->user ? $apartado[$i]->user->vehicle->placas : ''}}"
+                                            data-name="{{$apartado[$i]->user ? $apartado[$i]->user->name : ''}}"
                                         >{{$apartado[$i]['nombre']}}</td>
                                     @endfor
                                     </tr>
@@ -61,6 +64,8 @@
                                                         data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
                                                         data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
                                                         data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
+                                                        data-placas="{{$apartado[$i]->user ? $apartado[$i]->user->vehicle->placas : ''}}"
+                                                        data-name="{{$apartado[$i]->user ? $apartado[$i]->user->name : ''}}"
                                                         >{{$apartado[$i] ['nombre']}}</td>
                                                         @endfor
                                                 </tr>
@@ -76,6 +81,8 @@
                                                         data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
                                                         data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
                                                         data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
+                                                        data-placas="{{$apartado[$i]->user ? $apartado[$i]->user->vehicle->placas : ''}}"
+                                                        data-name="{{$apartado[$i]->user ? $apartado[$i]->user->name : ''}}"
                                                         >{{$apartado[$i] ['nombre']}}</td>
                                                         @endfor
                                                         </tr>
@@ -87,6 +94,8 @@
                                                         data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
                                                         data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
                                                         data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
+                                                        data-placas="{{$apartado[$i]->user ? $apartado[$i]->user->vehicle->placas : ''}}"
+                                                        data-name="{{$apartado[$i]->user ? $apartado[$i]->user->name : ''}}"
                                                         >{{$apartado[$i] ['nombre']}}</td>
                                                         @endfor
                                                         </tr>
@@ -103,6 +112,8 @@
                                                                 data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
                                                                 data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
                                                                 data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
+                                                                data-placas="{{$apartado[$i]->user ? $apartado[$i]->user->vehicle->placas : ''}}"
+                                                                data-name="{{$apartado[$i]->user ? $apartado[$i]->user->name : ''}}"
                                                                 @endif
                                                             >{{$apartado[$i] ['nombre']}}</td>
                                                             @endfor
@@ -115,6 +126,8 @@
                                                             data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
                                                             data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
                                                             data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
+                                                            data-placas="{{$apartado[$i]->user ? $apartado[$i]->user->vehicle->placas : ''}}"
+                                                            data-name="{{$apartado[$i]->user ? $apartado[$i]->user->name : ''}}"
                                                             >{{$apartado[$i] ['nombre']}}</td>
                                                             @endfor
                                                         </tr>
@@ -130,6 +143,8 @@
                                                         data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
                                                         data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
                                                         data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
+                                                        data-placas="{{$apartado[$i]->user ? $apartado[$i]->user->vehicle->placas : ''}}"
+                                                        data-name="{{$apartado[$i]->user ? $apartado[$i]->user->name : ''}}"
                                                         >{{$apartado[$i] ['nombre']}}</td>
                                                         @endfor
                                                 </tr>
@@ -137,19 +152,4 @@
                                         </table>
         </div>
            
-
-
-<script>
-    var lugares = document.querySelectorAll('.space');
-    lugares.forEach(function(lugar) {
-        lugar.addEventListener('click', function(event) {
-            var element = event.target;
-            $('#hora_entrada').val(element.dataset.hora_entrada);
-            $('#hora_salida').val(element.dataset.hora_salida);
-            $('#status').val(element.dataset.status);
-            $('#modal_space').modal();
-        });
-    });
-</script>
-
 @endsection

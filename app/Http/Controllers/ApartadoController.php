@@ -12,7 +12,7 @@ public function index(){
 }
 public function getApartadoA()
 {
-    $apartado = Space::with('spaceInfo')->get();
+    $apartado = Space::with(['user.vehicle', 'spaceInfo'])->get();
     return view('user.apartado', ['apartado' => $apartado]);
 }
 
