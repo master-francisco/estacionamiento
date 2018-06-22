@@ -41,7 +41,7 @@
                                    
                                     <tr>
                                     @for($i = 0; $i<=12;$i++)
-                                        <td class="lug-m space"
+                                        <td class="lug-m space {{ ($apartado[$i]->spaceInfo ? 'apartadol' : 'lugar-m') }} "
                                             data-toggle="modal_space"
                                             data-target="modal_space"
                                             data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"

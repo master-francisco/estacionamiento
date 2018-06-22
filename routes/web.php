@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/perfil',['uses'=>'UserController@index','middleware'=>'auth'])->name('perfil');
+Route::post('/perfil-image',['uses'=>'UserController@imageUpdate','as'=>'image.update']);
 Route::get('/apartado',['uses'=>'ApartadoController@index','middleware'=>'auth'])->name('apartado');
 Route::get('/dashboard',['uses'=>'UserController@inicio','middleware'=>'auth'])->name('dashboard');
 Route::post('/perfil-update',['uses'=>'UserController@ActualizarInformacion','as'=>'update.info','middleware'=>'auth']);

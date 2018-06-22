@@ -4,6 +4,7 @@ $information = App\PersonalInformation::where('email', '=', Auth::user()->email)
 if($information == null){
     $information = new App\PersonalInformation;
 }
+$apartado = App\Space::where('user_id','=',Auth::user()->id)->with(['user.vehicle','spaceInfo'])->first();
 ?>
 <?php 
 $vehiculo = App\Vehicle::where('user_id', '=', Auth::user()->id)->first();
@@ -15,10 +16,10 @@ if($vehiculo == null){
 <div class="col-sm-4 perfil">
     <div class="image"></div>
     <div class="image-prof">
-        <form action="" id="avatarForm">
+        <form action="{{route('image.update')}}" id="avatarForm" method="POST" enctype="multipart/form-data">
           {{csrf_field()}}
           <input type="file" name="image" id="avatarInput">
-        <img src="/imagenes/users/{{Auth::user()->image}}" alt="" id="avatarImage">
+          <img src="/imagenes/users/{{Auth::user()->image}}" alt="" id="avatarImage">
       </form>
     </div>
     <p class="col-sm-8 col-sm-offset-2">
@@ -143,11 +144,10 @@ if($vehiculo == null){
                             <img src="../../imagenes/calendar-o.png" alt="">
                            <div class="container-datos">
                              <h1>Activo</h1>
-                            <p><strong>Placas:</strong>JMY-98-10</p>
-                            <p><strong>Carrera:</strong>Ingenieria en software</p>
-                            <p><strong>Codigo:</strong>I-097</p>
-                            <p><strong>Carro:</strong>Volswagen</p>                      
-                            <p><strong>Color:</strong>Verde</p>
+                            <p><strong>Placas:</strong>{{$apartado->user->vehicle->placas}}</p>
+                            <p><strong>Nombre:</strong>{{$apartado->user->name}}</p>
+                            <p><strong>Carro:</strong>{{$apartado->user->vehicle->marca}}</p>                      
+                            <p><strong>Color:</strong>{{$apartado->user->vehicle->color}}</p>
                            </div>
                           </div>
                     </div>

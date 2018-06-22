@@ -3,15 +3,17 @@ var avatarUrl;
     $(function(){
         $avatarInput = $('#avatarInput');
         $avatarImage = $('#avatarImage');
+        $avatarForm = $('#avatarForm');
 
     $avatarImage.on('click',function(){
-        alert('funcion no disponible');
+        $avatarInput.trigger('click');
     });
 
-    avatarUrl = $('avatarForm').attr('action');
-    $avatarInput.on('change',function(){
-      
+    $avatarInput.on('change', function() {
+        $avatarForm.submit();
     });
+
+    avatarUrl = $('avatarForm').attr('action');;
 });
     //profile ->informacion
     $(".nombre-input").hide();

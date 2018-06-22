@@ -7,6 +7,7 @@ use App\PersonalInformation;
 use Auth;
 use App\User;
 use \Toastr;
+use Intervention\Image\ImageManagerStatic as Image;
 class UserController extends Controller
 {
     protected function validator(array $data)
