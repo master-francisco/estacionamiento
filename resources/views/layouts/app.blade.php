@@ -54,8 +54,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ '/' }}">Welcome</a></li>
                         @else
                             @if(Auth::user()->role == 'EDITOR')
                             <li><a href="{{'/apartado'}}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Apartado</a></li>

@@ -16,7 +16,6 @@
                     </div>
                     <p>
                           <a class="btn btn-success" id="login" href="{{url('/login')}}">Inicia sesión</a>
-                          <a class="btn btn-success" id="login" href="{{url('/register')}}">Registrate</a>
                     <p>
         </div>
     </body>

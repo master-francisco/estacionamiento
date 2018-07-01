@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-@if(Auth::user()->role == "USER")
+@if(Auth::user()->role == "USER" )
 @include('includes/modal-user')
-
 @else
 @include('includes/modal-apartado')
 @endif
@@ -41,9 +40,10 @@
                                    
                                     <tr>
                                     @for($i = 0; $i<=12;$i++)
-                                        <td class="lug-m space {{ ($apartado[$i]->spaceInfo ? 'apartadol' : 'lugar-m') }} "
+                                        <td class="lug-m space {{ ($apartado[$i]->user_id ? 'apartadol' : 'lugar-m') }} "
                                             data-toggle="modal_space"
                                             data-target="modal_space"
+                                            data-lugar="{{$apartado[$i]->spaceInfo ? $apartado[$i]->nombre :''}}"
                                             data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
                                             data-hora_salida="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_salida : ''}}"
                                             data-status="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->status : ''}}"
@@ -58,7 +58,7 @@
                                             <tbody>
                                                 <tr>
                                                         @for($i = 13; $i<=25;$i++)
-                                                        <td class="lug-m space"
+                                                        <td class="lug-m space  {{ ($apartado[$i]->user_id ? 'apartadol' : 'lugar-m') }} "
                                                         data-toggle="modal_space"
                                                         data-target="modal_space"
                                                         data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
@@ -75,7 +75,7 @@
                                                     <tbody>
                                                         <tr>
                                                         @for($i = 26; $i<=38;$i++)
-                                                        <td class="lug-m space"
+                                                        <td class="lug-m space  {{ ($apartado[$i]->user_id ? 'apartadol' : 'lugar-m') }} "
                                                         data-toggle="modal_space"
                                                         data-target="modal_space"
                                                         data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
@@ -88,7 +88,7 @@
                                                         </tr>
                                                         <tr>
                                                         @for($i = 39; $i<=51;$i++)
-                                                        <td class="lug-m space"
+                                                        <td class="lug-m space  {{ ($apartado[$i]->user_id ? 'apartadol' : 'lugar-m') }} "
                                                         data-toggle="modal_space"
                                                         data-target="modal_space"
                                                         data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
@@ -105,7 +105,7 @@
                                                     <tbody>
                                                         <tr>
                                                             @for($i = 52; $i<=64;$i++)
-                                                            <td class="lug-m space"
+                                                            <td class="lug-m space  {{ ($apartado[$i]->user_id ? 'apartadol' : 'lugar-m') }} "
                                                                 @if($apartado[$i]['space_info'])
                                                                 data-toggle="modal_space"
                                                                 data-target="modal_space"
@@ -120,7 +120,7 @@
                                                         </tr>
                                                         <tr>
                                                             @for($i = 65; $i<=77;$i++)
-                                                            <td class="lug-m space"
+                                                            <td class="lug-m space  {{ ($apartado[$i]->user_id ? 'apartadol' : 'lugar-m') }} "
                                                             data-toggle="modal_space"
                                                             data-target="modal_space"
                                                             data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"
@@ -137,7 +137,7 @@
                                             <tbody>
                                                 <tr>
                                                         @for($i = 78; $i<=90;$i++)
-                                                        <td class="lug-m space"
+                                                        <td class="lug-m space  {{ ($apartado[$i]->user_id ? 'apartadol' : 'lugar-m') }} "
                                                         data-toggle="modal_space"
                                                         data-target="modal_space"
                                                         data-hora_entrada="{{$apartado[$i]->spaceInfo ? $apartado[$i]->spaceInfo->hora_entrada : ''}}"

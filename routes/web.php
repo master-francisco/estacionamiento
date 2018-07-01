@@ -33,4 +33,5 @@ Route::post('/create-code',['uses'=>'CodesController@createCode','as'=>'create.c
 Route::get('/settings-code',['uses'=>'CodesController@getCodes','middleware'=>'auth'])->name('code');
 Route::get('/settings/code-delete/{id_code}',['uses'=>'CodesController@deleteCode','as'=>'code.delete','middleware'=>'auth']);
 Route::get('/apartado',['uses'=>'ApartadoController@getApartadoA','middleware'=>'auth'])->name('apartado');
+Route::post('/apartado-create',['uses'=>'ApartadoController@createApartado','as'=>'create.apartado']);
 Route::post('/apartado/update/{id_user}',['uses'=>'SpaceController@updateSpace','as'=>'update.space','middleware'=>'auth']);

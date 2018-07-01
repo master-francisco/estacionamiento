@@ -253,3 +253,10 @@ ul.CTAs a {
     height: 80px;
     width: 100%;
 }
+.admin-register{
+    margin-top: 20px;
+}
+.admin-register h3{
+    text-align: center;
+    color:rgba(160,160,160,0.2);
+}

@@ -15,108 +15,16 @@ var avatarUrl;
 
     avatarUrl = $('avatarForm').attr('action');;
 });
-    //profile ->informacion
-    $(".nombre-input").hide();
-    $(".apellido-input").hide();
-    $(".carrera-input").hide();
-    $(".grado-input").hide();
-    $(".turno-input").hide();
-    $(".number-input").hide();
-    $(".buttons").hide();
-    $(document).ready(function(){
-       $("#show").click(function(){
-        $(".nombre-input").show();
-       });
-    });
-    $(document).ready(function(){
-        $("#show").click(function(){
-         $(".apellido-input").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#show").click(function(){
-         $(".carrera-input").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#show").click(function(){
-         $(".grado-input").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#show").click(function(){
-         $(".turno-input").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#show").click(function(){
-         $(".number-input").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#show").click(function(){
-         $(".buttons").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#cancelar").click(function(){
-            $(".nombre-input").hide();
-            $(".apellido-input").hide();
-            $(".carrera-input").hide();
-            $(".grado-input").hide();
-            $(".turno-input").hide();
-            $(".buttons").hide();
-            $(".number-input").hide();
-        });
-     });
-     //profile ->vehiculo
-     $(".marca-input").hide();
-     $(".modelo-input").hide();
-     $(".color-input").hide();
-     $(".placas-input").hide();
-     $(".año-input").hide();
-     $(".buttons-vehiculos").hide();
 
-     $(document).ready(function(){
-        $("#show1").click(function(){
-         $(".marca-input").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#show1").click(function(){
-         $(".modelo-input").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#show1").click(function(){
-         $(".color-input").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#show1").click(function(){
-         $(".placas-input").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#show1").click(function(){
-         $(".año-input").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#show1").click(function(){
-         $(".buttons-vehiculos").show();
-        });
-     });
-     $(document).ready(function(){
-        $("#cancelar-v").click(function(){
-            $(".marca-input").hide();
-            $(".modelo-input").hide();
-            $(".color-input").hide();
-            $(".placas-input").hide();
-            $(".año-input").hide();
-            $(".buttons-vehiculos").hide();
-        });
-     });
+$('#login-btn').attr('disabled','disabled');
+$( '#check-condiciones' ).on( 'click', function() {
+    if( $(this).is(':checked') ){
+       $('#login-btn').removeAttr('disabled');
+    } else {
+        $('#login-btn').attr('disabled','disabled');
+    }
+});
+ 
      $('.clockpicker').clockpicker('show');
      $('.container-a').hide();
  
@@ -126,20 +34,21 @@ var avatarUrl;
     lugares.forEach(function(lugar) {
         lugar.addEventListener('click', function(event) {
             var element = event.target;
-            var { hora_entrada, hora_salida, status } = element.dataset;
+            var { hora_entrada, hora_salida, status, placas, name } = element.dataset;
             $('#hora_entrada').val(element.dataset.hora_entrada);
             $('#hora_salida').val(element.dataset.hora_salida);
             $('#status').val(element.dataset.status);
             $('#name').val(element.dataset.name);
+            $('#nombre-lugar').val(element.dataset.nombre);
             $('#placas').val(element.dataset.placas);
             $('#modal_user').modal();
-            if(hora_entrada && hora_salida && status){
-            $('#ap').hide();
-            $('#info').html('Este lugar ya ha sido ocupado');
-            }else{
+            if(!name & !placas){
                 $('#ap').show();
                 $('#info').html('');
-            }
+            }else{
+                $('#ap').hide();
+                $('#info').html('Este lugar ya ha sido ocupado');
+            } 
                
             $('#modal_space').modal();
         });

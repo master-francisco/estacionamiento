@@ -25,11 +25,24 @@
                     </span>
                 @endif
                 </div>
+                <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
+                    <label for="code" class="control-label">Codigo</label>
+                    <input id="code" type="code" class="form-control" name="code" required>
+                    @if ($errors->has('code'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('code') }}</strong>
+                    </span>
+                @endif
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="check-condiciones">
+                    <label class="form-check-label" for="check-condiciones"><a href="">Aceptar terminos y condiciones</a></label>
+                  </div>
+                </div>
                 <a class="btn btn-link" href="{{ route('password.request') }}">
                     Olvidaste tu contraseña?
                 </a>
                 <div class="form-group login">
-                        <button type="submit" class="btn btn-primary col-sm-12 col-xs-12">
+                        <button type="submit" id="login-btn" class="btn btn-primary col-sm-12 col-xs-12">
                             Login
                         </button>
                     </div>

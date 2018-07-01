@@ -9,8 +9,11 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="" method="post">
+          <form action="{{route('create.apartado')}}" method="POST" enctype="multipart/form-data">
+            {{csrf_field()}}
             <p id="info"></p>
+            <input type="hidden" name="id" id="id" value="{{Auth::user()->id}}">
+            <input type="hidden" name="nombre-lugar" id="nombre-lugar">
             <button type="submit" class="btn btn-success col-sm-12 col-xs-12" id="ap">Apartar</button>
           </form>
         </div>
