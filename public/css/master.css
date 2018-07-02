@@ -141,6 +141,10 @@ position: relative;
 .container-t{
 	 margin: 0 auto;
 }
+.container-a img{
+	float: left;
+	margin-bottom: 20px;
+}
 @media(max-width: 800px) {
 	.container-img img{
 		height:400px;
@@ -202,6 +206,16 @@ position: relative;
 			.container-info{
 				margin-left: 50px;
 			}
+			.container-datos{
+				margin-left:0px !important;
+			}
+			.container-a .container-datos h1{
+				width: 60%;
+				margin-left: 0px;
+				font-size: 20px;
+				clear: both;
+			}
+
 			.container-info h1{
 				padding: 1rem;
 				background: red;

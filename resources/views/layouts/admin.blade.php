@@ -27,18 +27,11 @@
             
                         <ul class="list-unstyled components">
                             <li class="active">
-                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Usuarios</a>
+                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Alta Usuarios</a>
                                 <ul class="collapse list-unstyled" id="homeSubmenu">
                                         <li><a href="{{'/create-user'}}">Crear</a></li>
                                         <li><a href="{{'/settings'}}">Configurar</a></li>
                                 </ul>
-                            </li>
-                            <li>
-                                <a href="#codeSubmenu" data-toggle="collapse" aria-expanded="false">Codigo</a>
-                                <ul class="collapse list-unstyled" id="codeSubmenu">
-                                        <li><a href="{{'/codes'}}">Crear</a></li>
-                                        <li><a href="{{'/settings-code'}}">Configurar</a></li>
-                                    </ul>
                             </li>
                             <li><a href="{{'/home'}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
                             <li>
@@ -87,11 +80,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 
-    <script>
-        if($('.modal-display').length > 0) {
-            $('.modal-display').modal('show');
-        }
-    </script>
 {!! Toastr::message() !!}
 
 </body>

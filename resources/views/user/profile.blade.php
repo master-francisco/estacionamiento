@@ -30,7 +30,7 @@ if($vehiculo == null){
  <div class="col-sm-7 principal">
         <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#informacion">Información</a></li>
-                <li><a data-toggle="tab" href="#vehiculo">Vehiculo</a></li>
+                <li ><a data-toggle="tab" href="#vehiculo">Vehiculo</a></li>
                 <li><a data-toggle="tab" href="#reservacion">Mis Reservaciones</a></li>
               </ul>
               
@@ -55,7 +55,7 @@ if($vehiculo == null){
                       <div class="container">
                         <p><strong>Telefono: </strong><a>{{$information->number_phone}}</a></p>
                       </div>              
-                </div>
+              </div>
                 <div id="vehiculo" class="tab-pane fade">
                       <h3>Mi vehiculo</h3>
                   <div class="container">
@@ -72,23 +72,25 @@ if($vehiculo == null){
                   </div>
                   <div class="container">
                       <p><strong>Año: </strong></span><a>{{optional($vehiculo)->año}}</a></p>
-                    </div>     
-                </div>
+                    </div> 
+                  </div>
                 <div id="reservacion" class="tab-pane fade">
+                    @if(optional($apartado)->status == null && optional($apartado)->user_id != Auth::user()->id)
                   <h3>Mis Reservaciones</h3>
                   <div class="container-sr">
                       <img src="../../imagenes/calendar-sr.png" alt="">
                       <div class="container-info">
                           <h1>Sin Reservación</h1>
                       </div>
-                      
                     </div>
+                    @elseif(optional($apartado)->status == null && optional($apartado)->user_id == Auth::user()->id)
                     <div class="container-a">
                       <img src="../../imagenes/calendar-a.png" alt="">
                       <div class="container-datos">
                           <h1>En proceso...</h1>
                       </div>
                     </div>
+                    @elseif(apartado($apartado)->status == 'activo' && optional($apartado)->user_id == Auth::user()->id)
                     <div class="col-sm-6">
                         <div class="container-o">
                             <img src="../../imagenes/calendar-o.png" alt="">
@@ -101,7 +103,8 @@ if($vehiculo == null){
                            </div>
                           </div>
                     </div>
-                    
+                    @endif
                 </div>
+                
  </div>
 @endsection

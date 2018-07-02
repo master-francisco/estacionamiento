@@ -26,9 +26,6 @@ $( '#check-condiciones' ).on( 'click', function() {
 });
  
      $('.clockpicker').clockpicker('show');
-     $('.container-a').hide();
- 
-     $('.container-sr').hide();
  
  var lugares = document.querySelectorAll('.space');
     lugares.forEach(function(lugar) {
@@ -53,3 +50,4 @@ $( '#check-condiciones' ).on( 'click', function() {
             $('#modal_space').modal();
         });
     });
+

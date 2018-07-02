@@ -7,4 +7,6 @@ $(document).ready(function () {
 $(document).ready(function() {
     $('#example').DataTable();
 });
-
+$('#user-edit').on('click',function(){
+    $('#moda_user').modal();
+});
