@@ -7,7 +7,9 @@ use App\PersonalInformation;
 use Auth;
 use App\User;
 use \Toastr;
+use Illuminate\Support\Facades\Input;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Redirect;
 class UserController extends Controller
 {
     protected function validator(array $data)
@@ -21,7 +23,6 @@ class UserController extends Controller
     }
     public function createUser(Request $request){
         $user = new User();
-        $personal = new PersonalInformation();
         $data = $request->all();
         $user ->name=$data['name'];
         $user->surname=$data['surname'];
@@ -34,15 +35,36 @@ class UserController extends Controller
         }else{
             Toastr::success("El usuario se creado  correctamente");
             $user->save();
-    
+            
         }
-        return redirect()->back();
+        return view('admin.user',['user_email' => $user->email ,'user_id'=>$user->id]);
         
+    }
+    public function crearInformacion(Request $request){
+        $info = new PersonalInformation();
+        $data = $request->all();
+        dd($request->all());
+        $info->career=$data['career'];
+        $info->grade=$data['grade'];
+        $info->turn=$data['turn'];
+        $info->number_phone=$data['number_phone'];
+
+        if(!$info->save()){
+            Toastr::warning("La información no se hace creado");
+        }else{
+            Toastr::success("La información se ha creado correctamente");
+        }
+        return view('admin.user');
     }
     public function getUsers()
     {
         $users = User::orderBy('created_at', 'asc')->get();
         return view('admin.settings-user', ['users' => $users]);
+    }
+    public function ObtenerUsuarios()
+    {
+        $users = User::orderBy('created_at', 'asc')->get();
+        return view('includes.modal-apartado', ['users' => $users]);
     }
     public function getViewUser()
     {
@@ -89,11 +111,11 @@ class UserController extends Controller
             $informacion->save();
         }
        
-        return redirect()->back();
+        return view('admin.user');
     }
 
     public function UpdateInformation(Request $request){
-        $datos = PersonalInformation::where('email','=', Auth::user()->email)->first();
+        $datos = PersonalInformation::where('email','=', Input::get('correo'))->first();
         $career = $request->get('career');
         $grade = $request->get('grade');
         $turn = $request->get('turn');
@@ -118,31 +140,32 @@ class UserController extends Controller
             $datos->save();
             Toastr::success("La informacion se actualizado correctamente");
         }
-        return redirect()->back();
+        return redirect('admin.user');
     }
     private function createInformacion(Request $request){
-        if(PersonalInformation::where('email', '=', Auth::user()->email)->first() == null){
+        if(PersonalInformation::where('email', '=', Input::get('correo'))->first() == null){
             $personalInformation = new PersonalInformation;
             $personalInformation->fill($request->all());
             $personalInformation->save();
             }
-
+    
         }
         public function ActualizarInformacion(Request $request)
         {
 
         if (!$this->personalInformationExists()) {
-            $request->request->add(['email' => Auth::user()->email]);
+            $request->request->add(['email' => Input::get('correo')]);
             $this->createInformacion($request);
         }
         else if($request->has('career') || $request->has('grade')||$request->has('turn')||$request->has('number_phone') && $request->has('name')|| $request->has('surname')){
+            dd($request->all());
             $this->UpdateInformation($request);
-            $this->updateUser($request);
+          //$this->updateUser($request);
         }
-        return redirect()->back();
+        return view('admin.user');
         }
         private function personalInformationExists(){
-        return (PersonalInformation::where('email', '=', Auth::user()->email)->first() != null);
+        return (PersonalInformation::where('email', '=', Input::get('correo'))->first() != null);
         }
     
     public function deleteUser($id_user){

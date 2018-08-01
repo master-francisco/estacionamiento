@@ -1,4 +1,5 @@
-
+/* estilos utilizados para la
+ventana de login */
 .vl{
 	background-color:rgba(123, 236,236,0.0);
 	border-radius: 2%;
@@ -8,15 +9,17 @@
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 60px;
-	padding-top: 7px;
+	padding-top: 10px;
 	-webkit-box-shadow: 5px -1px 24px 2px rgba(205,205,205,1);
 	-moz-box-shadow: 5px -1px 24px 2px rgba(205,205,205,1);
 	box-shadow: 5px -1px 24px 2px rgba(205,205,205,1);
 }
+/*estilos para checkbox de de la ventana de inicio de sesion */
 .form-check{
 	margin-top: 14px;
 	border-bottom: 1px solid rgba(230,230,230,0.8);
 }
+/* estilos para el botón de inicio de sesión **/
 .login .btn-primary{
 	border: none;
 	font-family: Arial, Helvetica, sans-serif;
@@ -131,6 +134,7 @@ position: relative;
 	color:black;
 	font-weight: bolder;
 	margin-right: 20px;
+	margin-top:7px;
 }
 .btn-success{
 	border-radius:1.875rem;
@@ -413,4 +417,7 @@ height: 180px;
 .container-datos p{
 	margin-right: 10px;
 	font-size:20px;
+}
+#modal_space{
+	margin-bottom: 60px;
 }

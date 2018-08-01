@@ -22,8 +22,8 @@ Route::get('/perfil',['uses'=>'UserController@index','middleware'=>'auth'])->nam
 Route::post('/perfil-image',['uses'=>'UserController@imageUpdate','as'=>'image.update']);
 Route::get('/apartado',['uses'=>'ApartadoController@index','middleware'=>'auth'])->name('apartado');
 Route::get('/dashboard',['uses'=>'UserController@inicio','middleware'=>'auth'])->name('dashboard');
-Route::post('/perfil-update',['uses'=>'UserController@ActualizarInformacion','as'=>'update.info','middleware'=>'auth']);
-Route::post('/perfil-vehicle-update',['uses'=>'VehicleController@updateVehicle','as'=>'update.vehicle','middleware'=>'auth']);
+Route::post('/dashboard-users',['uses'=>'UserController@ActualizarInformacion','as'=>'update.info','middleware'=>'auth']);
+Route::post('/vehicle',['uses'=>'VehicleController@updateVehicle','as'=>'update.vehicle','middleware'=>'auth']);
 Route::get('/create-user',['uses'=>'UserController@getViewUser','middleware'=>'auth'])->name('user');
 Route::get('/settings-delete/{id_user}',['uses'=>'UserController@deleteUser','as'=>'user.delete','middleware'=>'auth']);
 Route::post('/dashboard-user',['uses'=>'UserController@createUser','as'=>'create.user','middleware'=>'auth']);
@@ -34,4 +34,6 @@ Route::get('/settings-code',['uses'=>'CodesController@getCodes','middleware'=>'a
 Route::get('/settings/code-delete/{id_code}',['uses'=>'CodesController@deleteCode','as'=>'code.delete','middleware'=>'auth']);
 Route::get('/apartado',['uses'=>'ApartadoController@getApartadoA','middleware'=>'auth'])->name('apartado');
 Route::post('/apartado-create',['uses'=>'ApartadoController@createApartado','as'=>'create.apartado']);
-Route::post('/apartado/update/{id_user}',['uses'=>'SpaceController@updateSpace','as'=>'update.space','middleware'=>'auth']);
+Route::post('/apartado/update',['uses'=>'SpaceController@updateSpace','as'=>'update.space','middleware'=>'auth']);
+Route::get('/user',['uses'=>'UserController@user','middleware'=>'auth'])->name('users');
+Route::get('/apartados',['uses'=>'UserController@ObtenerUsuarios','middleware'=>'auth'])->name('user');

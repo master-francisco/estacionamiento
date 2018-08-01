@@ -12,10 +12,14 @@
     <body>
         <div class="container-t">
                 <div class="container-img">
-                        <img src="../../imagenes/homer.png" alt="">
+                        <img src="../../imagenes/sie.png" alt="">
                     </div>
                     <p>
-                          <a class="btn btn-success" id="login" href="{{url('/login')}}">Inicia sesión</a>
+                        @guest
+                          <a class="btn btn-success" id="login" href="{{url('/login')}}">Iniciar sesión</a>
+                          @else
+                          <a class="btn btn-success" id="login" href="{{url('/home')}}">Ir al menu principal</a>
+                          @endif
                     <p>
         </div>
     </body>

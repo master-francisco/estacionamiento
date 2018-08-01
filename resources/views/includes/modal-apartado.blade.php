@@ -1,4 +1,6 @@
-  
+<?php 
+$users = App\User::orderBy('created_at', 'asc')->get();
+?>
   <!-- Modal -->
   <div class="modal fade" id="modal_space" tabindex="-1" role="dialog" aria-labelledby="modal_space" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -13,10 +15,18 @@
         <div class="modal-body">
           <div class="info">
               <h3>Información sobre el apartado</h3>
-            <form action="" method="post">
+            <form action="{{route('update.space')}}" method="POST" enctype="multipart/form-data">
+                {{csrf_field()}}
               <div class="form-group">
+                <input type="hidden" id="user" name="user">
+                <input type="hidden" id="id_lugar" name="id_lugar">
                 <label for="">Nombre</label>
-                <input type="text" class="form-control" name="name" id="name">
+                <select class="form-control" id="name" name="name">
+                  <option selected disabled>Selecciona una opción</option>
+                  @foreach ($users as $user)
+                  <option value="{{$user->name}}">{{$user->name}}</option>
+                  @endforeach 
+                 </select>
               </div>
               <div class="form-group">
                   <label for="">Placas</label>
@@ -53,7 +63,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary col-sm-6 col-xs-6 col-sm-offset-3 col-xs-offset-3">Save changes</button>
+          <button type="submit" class="btn btn-primary col-sm-6 col-xs-6 col-sm-offset-3 col-xs-offset-3">Save changes</button>
         </div>
       </form>
       </div>

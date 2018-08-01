@@ -54,7 +54,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ '/' }}">Welcome</a></li>
+                            <li><a href="{{ '/' }}">Bienvenidos</a></li>
                         @else
                             @if(Auth::user()->role == 'EDITOR')
                             <li><a href="{{'/apartado'}}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Apartado</a></li>
@@ -66,23 +66,24 @@
                                     </a></li>
                             @else
                             @if(Auth::user()->role == 'ADMIN')
-                             <li><a href="{{'/dashboard'}}">Admin Page</a></li>
+                             <li><a href="{{'/dashboard'}}">Administrar Pagina</a></li>
                              <li><a href="{{'/apartado'}}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Apartado</a></li>
                              <li class="dropdown">
                                     <li><a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Logout
+                                                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Salir
                                     </a></li>
                              @else
-                            <li><a href="{{'/home'}}">Inicio</a></li>
+                            <li><a href="{{'/home'}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
                             <li><a href="{{'/perfil'}}"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Perfil</a></li>
                             <li><a href="{{'/apartado'}}"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Apartado</a></li>
+                            <li><a href="../../reglamento/reglamento.pdf" target="_BLANK"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Reglamento</a></li>
                             <li class="dropdown">
                                     <li><a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Logout
+                                                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Salir
                                     </a></li>
                                 @endif
                             @endif

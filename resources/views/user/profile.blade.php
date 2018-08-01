@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<!-- Sección de php para traer información de algunos modelos conforme el email o el id !-->
 <?php
 $information = App\PersonalInformation::where('email', '=', Auth::user()->email)->first();
 if($information == null){
@@ -11,13 +12,16 @@ $vehiculo = App\Vehicle::where('user_id', '=', Auth::user()->id)->first();
 if($vehiculo == null){
     $vehiculo = new App\Vehicle;
 }
-
 ?>
+<!-- fin de sección de php !-->
 @section('content')
+<!-- Columnas de boostrap para el acomodo de elementos !-->
 <div class="col-sm-4 perfil">
     <div class="image"></div>
+  <!-- imagen de perfil con formulario para realizar el cambio !-->
     <div class="image-prof">
         <form action="{{route('image.update')}}" id="avatarForm" method="POST" enctype="multipart/form-data">
+         <!-- token de autentificación !-->
           {{csrf_field()}}
           <input type="file" name="image" id="avatarInput">
           <img src="/imagenes/users/{{Auth::user()->image}}" alt="" id="avatarImage">
@@ -27,13 +31,15 @@ if($vehiculo == null){
       {{Auth::user()->name}} {{Auth::user()->surname}}
     </p>
 </div>
+<!-- Inicia las tabs que contienen la información del usuario,vehiculo y sobre el apartado !-->
  <div class="col-sm-7 principal">
         <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#informacion">Información</a></li>
-                <li ><a data-toggle="tab" href="#vehiculo">Vehiculo</a></li>
+                <li ><a data-toggle="tab" href="#vehiculo">Vehículo</a></li>
                 <li><a data-toggle="tab" href="#reservacion">Mis Reservaciones</a></li>
               </ul>
-              
+              <!-- Auth::user usado en esta sección es para traer datos de usuario autentificado
+                 guardado en la tabla de usuarios !-->
               <div class="tab-content">
                 <div id="informacion" class="tab-pane fade in active">
                   <h3>Información Personal</h3>
@@ -57,7 +63,7 @@ if($vehiculo == null){
                       </div>              
               </div>
                 <div id="vehiculo" class="tab-pane fade">
-                      <h3>Mi vehiculo</h3>
+                      <h3>Mi vehículo</h3>
                   <div class="container">
                     <p><strong>Marca: </strong><a>{{optional($vehiculo)->marca}}</a></p>
                   </div>
@@ -95,7 +101,7 @@ if($vehiculo == null){
                         <div class="container-o">
                             <img src="../../imagenes/calendar-o.png" alt="">
                            <div class="container-datos">
-                             <h1>Activo</h1>
+                             <h1>Reservado</h1>
                             <p><strong>Placas:</strong>{{optional(optional(optional($apartado)->user)->vehicle)->placas}}</p>
                             <p><strong>Nombre:</strong>{{optional(optional($apartado)->user)->name}}</p>
                             <p><strong>Carro:</strong>{{optional(optional(optional($apartado)->user)->vehicle)->marca}}</p>                      
@@ -107,4 +113,5 @@ if($vehiculo == null){
                 </div>
                 
  </div>
+<!-- cierre de tabs de información !-->
 @endsection

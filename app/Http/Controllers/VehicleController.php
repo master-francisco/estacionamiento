@@ -7,11 +7,12 @@ use App\Vehicle;
 use Auth;
 use App\User;
 use \Toastr;
+use Illuminate\Support\Facades\Input;
 class VehicleController extends Controller
 {
 
     public function ActualizarVehiculo(Request $request){
-        $informacion = Vehicle::where('user_id','=',Auth::user()->id)->first();
+        $informacion = Vehicle::where('user_id','=',Input::get('user_id'))->first();
         $marca=$request->get('marca');
         $modelo=$request->get('modelo');
         $color=$request->get('color');
@@ -36,10 +37,10 @@ class VehicleController extends Controller
         }
         Toastr::success("La información del vehiculo se actualizado  correctamente");
             $informacion->save();
-        return redirect()->back();
+            return view('admin.user');
     }
     private function createVehiculo(Request $request){
-        if(Vehicle::where('user_id','=',Auth::user()->id)->first() == null){
+        if(Vehicle::where('user_id','=',Input::get('user_id'))->first() == null){
             $vehicle = new Vehicle;
             $vehicle->fill($request->all());
             $vehicle->save();
@@ -49,16 +50,17 @@ class VehicleController extends Controller
     {
 
     if (!$this->VehicleExists()) {
-        $request->request->add(['user_id'=> Auth::user()->id]);
+        $request->request->add(['user_id'=> Input::get('user_id')]);
+
         $this->createVehiculo($request);
     }
     else if($request->has('marca') || $request->has('modelo')||$request->has('color')||$request->has('placas')||$request->has('año')){
         $this->ActualizarVehiculo($request);
     }
-    return redirect()->back();
+    return view('admin.user');
 }
 private function VehicleExists(){
-    return (Vehicle::where('user_id', '=', Auth::user()->id)->first() != null);
+    return (Vehicle::where('user_id', '=', Input::get('user_id'))->first() != null);
     }
 }
 

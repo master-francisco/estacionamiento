@@ -13,6 +13,11 @@ class CreatePersonalInformationTable extends Migration
      */
     public function up()
     {
+        /*migracion de la tabla de personal información con relación con el usuario
+        dependiendo del correo
+        -crea tabla con atributos como string,integer entre otros
+        -por comandos de consola se crean las migraciones a la BD
+        */
         Schema::create('personal_information', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email')->unique();
@@ -28,12 +33,12 @@ class CreatePersonalInformationTable extends Migration
             ->onDelete('cascade');
         });
     }
-
     /**
-     * Reverse the migrations.
-     *
      * @return void
      */
+    /* Elimina la tabla con el nombre escrito en comillas si existe eso se 
+    verifica con el atributo dropIfExists
+    */
     public function down()
     {
         Schema::dropIfExists('personal_information');

@@ -1,18 +1,17 @@
 @extends('layouts.admin')
-
 @section('content')
 <div class="col-sm-7 admin-register">
 <ul class="nav nav-tabs" id="myTab">
     <li class="active "><a data-toggle="tab" href="#informacion">Registrar Usuario</a></li>
-    <li class="disabled"><a href="#informacion-personal">Registrar Información</a></li>
-    <li class="disabled"><a  href="#codigo">Codigo</a></li>
-    <li class="disabled"><a href="#vehiculo">Registrar Vehiculo</a></li>
+    <li><a data-toggle="tab" href="#vehiculo">Registrar Vehiculo</a></li>
+    <li><a data-toggle="tab"  href="#codigo">Codigo</a></li>
+    <li><a data-toggle="tab" href="#informacion-personal">Registrar Información</a></li>
   </ul>
   <div class="tab-content">
     <div id="informacion" class="tab-pane fade in active">
           <div class="col-sm-8">
                 <h3>Información General</h3>
-            <form method="POST" action="{{ route('create.user') }}">
+            <form method="POST" action="{{ route('create.user')}}">
                {{csrf_field()}}
                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                    <label for="name" class="control-label">Nombre</label>
@@ -72,39 +71,45 @@
          </form>
     </div>
     </div>
-    <div id="informacion-personal" class="tab-pane fade">
+   <div id="vehiculo" class="tab-pane fade">
     <div class="col-sm-8">
-        <h3>Información adicional</h3>
-        <form action="" method="post">
-            {{csrf_field()}}
-            <div class="form-group">
-                <label for="">Carrera</label>
-                <input type="text" class="form-control" id="career" name="career" required>
+  <h3>Información Vehiculo</h3>
+<form action="{{route('update.vehicle')}}" method="post">
+    {{csrf_field()}}
+        <div class="form-group">
+            <input type="hidden" name="user_id" id="user_id" value="{{$user_id  ?? ''}}">
+            <label for="">Marca</label>
+            <input type="text" class="form-control" name="marca" id="marca" required>
+        </div>
+        <div class="form-group">
+                <label for="">Modelo</label>
+                <input type="text" class="form-control" name="modelo" id="modelo" required>
             </div>
-            <div class="form-group">
-                    <label for="">Grado</label>
-                    <input type="text" class="form-control" id="grade" name="grade" required>
-                </div>
-            <div class="form-group">
-                    <label for="">Turno</label>
-                    <input type="text" class="form-control" id="turn" name="turn" required>
-                </div>
-            <div class="form-group">
-                    <label for="">Telefono</label>
-                    <input type="text" class="form-control" id="number_phone" name="number_phone" required>
-                </div>
-            <div class="form-group register">
-                    <button type="submit" class="btn btn-primary col-sm-12 col-xs-12 changes-personal">Registrar</button>
-                </div>
-        </form>
-    </div>
-    </div>
+        <div class="form-group">
+                <label for="">Color</label>
+                <input type="text" class="form-control" name="color" id="color" required>
+            </div>
+        <div class="form-group">
+                <label for="">Placas</label>
+                <input type="text" class="form-control" name="placas" id="placas" required>
+            </div>
+        <div class="form-group">
+                <label for="">Año</label>
+                <input type="text" class="form-control" name="año" id="año" required>
+            </div>
+        <div class="form-group register">
+                <button type="submit" class="btn btn-primary col-sm-12 col-xs-12 changes-vehiculo">Registrar</button>
+            </div>
+    </form>
+</div>
+</div>
     <div id="codigo" class="tab-pane fade">
             <div class="col-sm-8 ">
                     <form method="POST" action="{{ route('create.code') }}">
                        {{csrf_field()}}
                        <h3>Codigo</h3>
                    <div class="col-sm-12">
+                        <input type="hidden" name="correo" id="correo" value="{{$user_id  ?? ''}}">
                        <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
                            <label for="code" class="control-label">Codigo</label>
                            <input id="code" type="text" class="form-control" name="code" value="{{ old('code') }}" required autofocus>
@@ -152,36 +157,38 @@
                  </form>
                </div>
     </div>
-    <div id="vehiculo" class="tab-pane fade">
-            <div class="col-sm-8">
-          <h3>Información Vehiculo</h3>
-        <form action="" method="post">
-            {{csrf_field()}}
+    <div id="informacion-personal" class="tab-pane fade">
+        <div class="col-sm-8">
+            <h3>Información adicional</h3>
+            <form  method="POST" action="{{route('update.info')}}">
+                {{csrf_field()}}
                 <div class="form-group">
-                    <label for="">Marca</label>
-                    <input type="text" class="form-control" name="marca" id="marca" required>
+                        <input type="hidden" name="correo" id="correo" value="{{$user_email  ?? ''}}">
+                    <label for="">Carrera</label>
+                    <input type="text" class="form-control" id="career" name="career" required>
                 </div>
                 <div class="form-group">
-                        <label for="">Modelo</label>
-                        <input type="text" class="form-control" name="modelo" id="modelo" required>
+                        <label for="">Grado</label>
+                        <input type="text" class="form-control" id="grade" name="grade" required>
                     </div>
                 <div class="form-group">
-                        <label for="">Color</label>
-                        <input type="text" class="form-control" name="color" id="color" required>
+                        <label for="">Turno</label>
+                        <input type="text" class="form-control" id="turn" name="turn" required>
                     </div>
                 <div class="form-group">
-                        <label for="">Placas</label>
-                        <input type="text" class="form-control" name="placas" id="placas" required>
-                    </div>
-                <div class="form-group">
-                        <label for="">Año</label>
-                        <input type="text" class="form-control" name="año" id="año" required>
+                        <label for="">Telefono</label>
+                        <input type="text" class="form-control" id="number_phone" name="number_phone" required>
                     </div>
                 <div class="form-group register">
-                        <button type="submit" class="btn btn-primary col-sm-12 col-xs-12 changes-vehiculo">Registrar</button>
+                        <button type="submit" class="btn btn-primary col-sm-12 col-xs-12 changes-personal">Registrar</button>
                     </div>
             </form>
         </div>
-    </div>
+        </div>
+
+   
     </div>
 @endsection
+<script>
+    $('.2').show();
+</script>

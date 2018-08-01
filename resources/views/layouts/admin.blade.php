@@ -27,7 +27,7 @@
             
                         <ul class="list-unstyled components">
                             <li class="active">
-                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Alta Usuarios</a>
+                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Alta Usuarios</a>
                                 <ul class="collapse list-unstyled" id="homeSubmenu">
                                         <li><a href="{{'/create-user'}}">Crear</a></li>
                                         <li><a href="{{'/settings'}}">Configurar</a></li>
@@ -38,7 +38,7 @@
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Logout
+                                                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Salir
                                     </a>
                             </li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
