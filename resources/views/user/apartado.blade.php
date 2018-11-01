@@ -156,11 +156,11 @@
                                     <table id="abajo">
                                             <tbody>
                                                 <tr>
-                                                        @for($i = 78; $i<=90;$i++)
-                                                        <td class="lug-m space  {{ ($apartado[$i]->user_id ? 'apartadol' : 'lugar-m') }} "
+                                                    @for($i = 78; $i <= 90; $i++)
+                                                    <td class="lug-m space {{ ($apartado[$i]->user_id ? 'apartadol' : 'lugar-m') }} "
                                                         data-toggle="modal_space"
                                                         data-target="modal_space"
-                                                        data-a="{{ var_export(!empty($apartado[$i]->spaceInfo), true) }}"
+                                                        data-a="{{ var_export(empty(!$apartado[$i]->user_id), true) }}"
                                                         data-lugar="{{$apartado[$i] ? $apartado[$i]['nombre'] : ''}}"
                                                         data-id="{{$apartado[$i] ? $apartado[$i]->user_id : ''}}"
                                                         data-idl="{{$apartado[$i] ? $apartado[$i]->id : ''}}"
@@ -170,7 +170,7 @@
                                                         data-placas="{{$apartado[$i]->user && $apartado[$i]->user->vehicle ?  $apartado[$i]->user->vehicle->placas : ''}}"
                                                         data-name="{{$apartado[$i]->user ? $apartado[$i]->user->name : ''}}"
                                                         >{{$apartado[$i] ['nombre']}}</td>
-                                                        @endfor
+                                                @endfor
                                                 </tr>
                                             </tbody>
                                         </table>

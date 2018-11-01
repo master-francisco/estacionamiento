@@ -10,66 +10,42 @@
         <title>SIE /{{Route::currentRouteName()}}</title>
     
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="../../../css/slidebar.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    </head>
+        <link rel="shortcut icon" href="https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/jquery-clockpicker.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
     <body>
-            <div class="wrapper">
-                    <!-- Sidebar Holder -->
-                    <nav id="sidebar">
-                        <div class="sidebar-header">
-                            <h3>Administrador</h3>
-                        </div>
-            
-                        <ul class="list-unstyled components">
-                            <li class="active">
-                                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Alta Usuarios</a>
-                                <ul class="collapse list-unstyled" id="homeSubmenu">
-                                        <li><a href="{{'/create-user'}}">Crear</a></li>
-                                        <li><a href="{{'/settings'}}">Configurar</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="{{'/home'}}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Inicio</a></li>
-                            <li>
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                                 <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Salir
-                                    </a>
-                            </li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                        </ul>
-                    </nav>
-            
-                    <!-- Page Content Holder -->
-                    <div id="content">
-            
-                        <nav class="navbar navbar-default">
-                            <div class="container-fluid">
-            
-                                <div class="navbar-header">
-                                    <button type="button" id="sidebarCollapse" class="navbar-btn">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </button>
-                                </div>
-            
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-                    @yield('content')  
+        <div class="header">
+            <a href="#" id="menu-action">
+            <i class="fa fa-bars"></i>
+            <span>Close</span>
+            </a>
+            <div class="logo">
+            <a href="/dashboard"><img src="../../imagenes/log.png" alt=""></a>
+            Administración del sistema
             </div>
-    <!--scripts !-->   
-   
+        </div>
+        <div class="sidebar">
+            <ul>
+            <li><a href="{{'/create-user'}}"><i class="fa fa-user"></i><span>Alta de usuarios</span></a></li>
+            <li><a href="{{'/settings'}}"><i class="fa fa-eye"></i><span>Vista de usuarios</span></a></li>
+            <li><a href="#"><i class="fa fa-map"></i><span>Mapa del estacionamiento</span></a></li>
+            <li><a href="{{'/home'}}"><i class="fa fa-home"></i><span>Inicio</span></a></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i><span>Salir</span></a></li>
+            </ul>
+        </div>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+       
+        @yield('content')
+
+        <!--scripts !-->   
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
@@ -78,10 +54,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="{{ asset('js/styles.js')}}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
-
-{!! Toastr::message() !!}
-
-</body>
-    
+    {!! Toastr::message() !!}
+    </body>
 </html>

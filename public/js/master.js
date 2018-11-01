@@ -20,14 +20,14 @@ var avatarUrl;
 });
 /* evento query para desabilitar un boton hasta que 
 otro evento suceda */
-$('#login-btn').attr('disabled','disabled');
+/*$('#login-btn').attr('disabled','disabled');
 $( '#check-condiciones' ).on( 'click', function() {
     if( $(this).is(':checked') ){
        $('#login-btn').removeAttr('disabled');
     } else {
         $('#login-btn').attr('disabled','disabled');
     }
-});
+});*/
  
      $('.clockpicker').clockpicker('show');
  
@@ -62,6 +62,6 @@ $( '#check-condiciones' ).on( 'click', function() {
             $('#modal_space').modal();
         });
     });
-   // $('#modal_user').modal('show');
+
     
 

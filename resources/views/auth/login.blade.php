@@ -6,7 +6,7 @@
             y datos personales que not se pueden enviar por una ruta get !-->
         <form method="POST"  action="{{ route('login') }}">
             {{csrf_field()}}
-            <h1>Iniciar Sesión</h1>
+            <h1 class="tituloI">Iniciar Sesión</h1>
             <div class="col-sm-12">
                 <!-- la variable errors es una variable que viene por defecto en 
                     laravel para el manejo de errores segun el campo !-->
@@ -30,7 +30,7 @@
                     </span>
                 @endif
                 </div>
-                <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
+             <!--  <div class="form-group{{ $errors->has('code') ? ' has-error' : '' }}">
                         <label for="">Codigo</label>
                         <input type="text" class="form-control" name="code" id="code" placeholder="Ingresa tu código" required>
                         @if ($errors->has('code'))
@@ -43,7 +43,7 @@
                     <input type="checkbox" class="form-check-input" id="check-condiciones">
                     <label class="form-check-label" for="check-condiciones"><a href="../../reglamento/reglamento.pdf" target="_BLANK">Aceptar términos y condiciones</a></label>
                   </div>
-                </div>
+                </div>!-->
                 <a class="btn btn-link" href="{{ route('password.request') }}">
                     ¿Olvidaste tu contraseña?
                 </a>
