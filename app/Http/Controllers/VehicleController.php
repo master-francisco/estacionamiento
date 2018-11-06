@@ -51,13 +51,13 @@ class VehicleController extends Controller
 
     if (!$this->VehicleExists()) {
         $request->request->add(['user_id'=> Input::get('user_id')]);
-
+        Toastr::success("La información del vehiculo se creado  correctamente");
         $this->createVehiculo($request);
     }
     else if($request->has('marca') || $request->has('modelo')||$request->has('color')||$request->has('placas')||$request->has('año')){
         $this->ActualizarVehiculo($request);
     }
-    return view('admin.user');
+    return redirect()->action('UserController@getViewUser');
 }
 private function VehicleExists(){
     return (Vehicle::where('user_id', '=', Input::get('user_id'))->first() != null);

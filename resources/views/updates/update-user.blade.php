@@ -36,11 +36,11 @@
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="informacion">
                 <h3>Información General</h3>
-            <form method="POST" action="{{ route('create.user')}}">
+            <form method="POST" action="{{ route('update.user',,['id'=>$user->id])}}">
                {{csrf_field()}}
                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                    <label for="name" class="control-label">Nombre</label>
-                   <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                   <input id="name" type="text" class="form-control" name="name" value="{{$user->name}}">
                    @if ($errors->has('name'))
                    <span class="help-block">
                        <strong>{{ $errors->first('name') }}</strong>

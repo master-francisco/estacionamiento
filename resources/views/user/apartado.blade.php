@@ -6,6 +6,8 @@
 @else
 @include('includes/modal-apartado')
 @endif
+
+
     <!-- Es la simbologia  para que es cada lugar !-->
         <div class="container-principal col-sm-7 col-sm-offset-3">
                 <h3>Simbología</h3>

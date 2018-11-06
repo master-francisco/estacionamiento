@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>SIE /{{Route::currentRouteName()}}</title>
-    <link type="image/png" href="../../../imagenes/favicon.png" type="img/x-icon"/>
+    <link  rel="shortcut icon"  type="image/png" href="../../../imagenes/favicon.png" type="img/x-icon"/>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/master.css">

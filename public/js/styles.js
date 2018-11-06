@@ -193,16 +193,11 @@ var jumbotron = {
 $(document).ready(function() {
 	jumbotron.init();
 });
-
 function nextTab(elem) {
     $(elem).next().find('a[data-toggle="tab"]').click();
 }
+
 function prevTab(elem) {
     $(elem).prev().find('a[data-toggle="tab"]').click();
 }
-$hide = $('.next-step').hide();
-
-$('.submit-r').on('click',function(){
-$hide = $('.next-step').show();
-});
 

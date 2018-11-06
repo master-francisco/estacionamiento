@@ -24,7 +24,7 @@
                         <td>{{$user->role}}</td>
                         <td>{{$user->email}}</td>
                         <td>
-                                <a class="btn btn-primary btn-xs user" data-toggle="modal" data-target="#exampleModalCenter" aria-labelledby="#exampleModalCenter">Edit</a>
+                                <a class="btn btn-primary btn-xs user">Edit</a>
                                 <a class="btn btn-danger btn-xs" href="{{ route('user.delete',['id_user' => $user->id] )}}" >Delete</a>
                             </td>
                     </tr>

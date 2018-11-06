@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
 use App\PersonalInformation;
 use Auth;
 use App\User;
@@ -12,22 +13,14 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Redirect;
 class UserController extends Controller
 {
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'surname'=>'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-    }
-    public function createUser(Request $request){
+    
+    public function createUser(UserRequest $request){
         $user = new User();
         $data = $request->all();
         $user ->name=$data['name'];
         $user->surname=$data['surname'];
         $user->role=$data['role'];
-        $user->email=$data['email2'];
+        $user->email=$data['email'];
         $user->password=bcrypt($data['password']);
 
         if(!$user->save()){
@@ -43,18 +36,17 @@ class UserController extends Controller
     public function crearInformacion(Request $request){
         $info = new PersonalInformation();
         $data = $request->all();
-        dd($request->all());
         $info->career=$data['career'];
         $info->grade=$data['grade'];
         $info->turn=$data['turn'];
         $info->number_phone=$data['number_phone'];
-
+        
         if(!$info->save()){
             Toastr::warning("La información no se hace creado");
         }else{
-            Toastr::success("La información se ha creado correctamente");
+            Toastr::success("La información se ha creado correctamente"); 
         }
-        return view('admin.user');
+        return view('admin.user',['user_id' => $valor->id]);
     }
     public function getUsers()
     {
@@ -156,13 +148,13 @@ class UserController extends Controller
         if (!$this->personalInformationExists()) {
             $request->request->add(['email' => Input::get('correo')]);
             $this->createInformacion($request);
+            $valor=User::where('email', '=',Input::get('correo'))->first();
         }
         else if($request->has('career') || $request->has('grade')||$request->has('turn')||$request->has('number_phone') && $request->has('name')|| $request->has('surname')){
-            dd($request->all());
             $this->UpdateInformation($request);
           //$this->updateUser($request);
         }
-        return view('admin.user');
+        return view('admin.user',['user_id'=>$valor->id]);
         }
         private function personalInformationExists(){
         return (PersonalInformation::where('email', '=', Input::get('correo'))->first() != null);
